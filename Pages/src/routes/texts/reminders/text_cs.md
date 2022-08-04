@@ -14,7 +14,7 @@ Vygeneruje `dist/main.js` soubor s transpilovaným kódem.
 
 ## Použití
 
-`javascript: void($.getScript('TBD'))`
+`javascript: void($.getScript('https://cdn.jsdelivr.net/gh/DSroD/tribal-wars-scripts/Reminders/dist/main.js?raw'))`
 
 Po spuštění skriptu se zobrazí okno s časovači, kde lze přidat nový vlastní časovač, případně běžící/doběhlé časovače odstranit.
 

@@ -12,7 +12,7 @@ Generates `dist/main.js` file with transpiled javascript.
 
 ## Usage
 
-`javascript: void($.getScript('TBD'))`
+`javascript: void($.getScript('https://cdn.jsdelivr.net/gh/DSroD/tribal-wars-scripts/Reminders/dist/main.js?raw'))`
 
 Once you run the script, a window with reminders shows up. You can add new reminder or remove old/finished ones.
 

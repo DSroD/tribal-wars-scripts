@@ -22,7 +22,7 @@ Po spuštění skriptu se objeví textové pole s informacemi
 
 ### Provided stable build
 
-`javascript: void($.getScript('TBD'))`
+`javascript: void($.getScript('https://cdn.jsdelivr.net/gh/DSroD/tribal-wars-scripts/HelpGen/dist/main.js?raw'))`
 
 ## Disclaimer
 

@@ -3,7 +3,7 @@
 Jednoduchý jazyk inspirovaný jazykem SCHEME. Umožňuje přístup k proměnným ve hře a provádění operací nad nimi s možností definicí vlastních lambda expressions.
 
 ## REPL
-Skript: `javascript: void($.getScript('TBD'))`
+Skript: `javascript: void($.getScript('https://cdn.jsdelivr.net/gh/DSroD/tribal-wars-scripts/TWLang/dist/main.js?raw'))`
 Spuštěním skriptu se zobrazí okno REPL pro TWLang. Kód se evaluuje po stisknutí tlačítka `eval` nebo pomocí klávesové zkratky `Ctrl+Enter`
 
 ![Ukázka](/img/twlang_repl.png)

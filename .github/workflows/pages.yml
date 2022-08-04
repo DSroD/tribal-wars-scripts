@@ -36,7 +36,7 @@ jobs:
         run: yarn build
         working-directory: ./Pages
         env:
-          VITE_BASE_URL: https://dsrod.github.io/tw-scripts/
+          VITE_BASE_URL: https://dsrod.github.io/tribal-wars-scripts/
         
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v2.6.0

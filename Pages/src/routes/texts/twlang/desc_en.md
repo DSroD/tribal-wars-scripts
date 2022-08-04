@@ -1,0 +1,1 @@
+Minimal SCHEME inspired language. Contains basic binary and unary operations over numeric type, `cdr` and `car` to access list elements, `lambda` expressions and also variables tied directly to the game, such as resources, population or coordinates of current village. As accrding to rules, this language does not allow to automate any aspects of the game.

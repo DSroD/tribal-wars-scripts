@@ -1,0 +1,1 @@
+Minimální jazyk inspirovaný SCHEMEm. Obsahuje základní sadu binárních a unárních operandů nad numerickým typem, `cdr` a `car` pro přístup k elementům listu, `lambda` expressions pro definici funkcí. Dále obsahuje proměnné navázané přímo na instanci hry, jako např. počet surovin, populaci, koordináty momentální vesnice. Nijak nedovoluje přímo automatizovat hru.

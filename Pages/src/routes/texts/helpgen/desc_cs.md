@@ -1,0 +1,1 @@
+Tento skript generuje žádost o pomoc s veškerými důležitými informacemi v BB-kódech.

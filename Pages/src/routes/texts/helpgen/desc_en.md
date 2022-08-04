@@ -1,0 +1,1 @@
+This script generates a help request for a single incomming attack with all the necessary info in BB-codes. Currently only for czech localization.

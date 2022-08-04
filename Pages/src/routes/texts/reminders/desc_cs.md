@@ -1,0 +1,1 @@
+Skript *Reminders* slouží k tvorbě vlastních odpočítávadel se zvukovou notifikací.

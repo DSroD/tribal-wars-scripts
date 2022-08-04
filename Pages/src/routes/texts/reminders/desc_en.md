@@ -1,0 +1,1 @@
+Script *Reminders* allows you to create own timers with sound notification.

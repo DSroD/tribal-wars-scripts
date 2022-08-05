@@ -5,6 +5,7 @@ import csFlag from '../flags/cs.svg'
 import enFlag from '../flags/en.svg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
+import { Link } from "preact-router"
 
 interface HeaderBtnProps {
     children: string
@@ -19,7 +20,7 @@ function HeaderBtn({ children, to, mobile }: HeaderBtnProps) {
         return <a class={className} onClick={to}>{children}</a>
     }
 
-    return <a class={className} href={`${BASE_URL}${to}`}>{children}</a>
+    return <Link class={className} href={`${BASE_URL}${to}`}>{children}</Link>
 }
 
 interface MenuEntry {

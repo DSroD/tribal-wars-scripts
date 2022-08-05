@@ -19,6 +19,7 @@ import helpgen_text_cs from './texts/helpgen/text_cs.md?raw';
 import twlang_desc_en from './texts/twlang/desc_en.md?raw';
 import twlang_desc_cs from './texts/twlang/desc_cs.md?raw';
 import twlang_text_cs from './texts/twlang/text_cs.md?raw';
+import { Link } from "preact-router";
 
 interface ScriptPageProps {
     path: string
@@ -58,7 +59,7 @@ const headerText: Record<AppLang, string> =
 function ScriptView(path: string, props: ScriptItem, lang: AppLang)
 {
     return <div>
-        <h3 class="text-xl font-bold mb-2 pt-2"><a class="text-red-500 hover:text-red-700" href={`${path}/`}>{props.name}</a></h3>
+        <h3 class="text-xl font-bold mb-2 pt-2"><Link class="text-red-500 hover:text-red-700" href={`/scripts/${path}/`}>{props.name}</Link></h3>
         <Markdown options={options}>{props.desc[lang]}</Markdown>
     </div>
 }

@@ -35,8 +35,6 @@ jobs:
       - name: Build
         run: yarn build
         working-directory: ./Pages
-        env:
-          VITE_BASE_URL: https://dsrod.github.io/
         
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v2.6.0

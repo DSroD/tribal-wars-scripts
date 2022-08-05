@@ -45,7 +45,6 @@ export function App() {
     <AppContext.Provider value={{ lang, setLang }}>
       <Header />
       <article class="container sm:mt-4 lg:max-w-3xl mx-auto p-4">
-        // @ts-ignore
         <Router history={ hashHistoryAdapter(createHashHistory()) }>
           <Home path={BASE_URL} />
           <Script path={`${BASE_URL}scripts/:script_name?`} />

@@ -5,9 +5,20 @@ import { NotFound } from './routes/not_found'
 import { createContext } from 'preact'
 import Header from './components/header'
 import { Script } from './routes/script'
+import { HashHistory, createHashHistory } from 'history';
+import { CustomHistory } from 'preact-router';
 
 export const BASE_URL = import.meta.env.VITE_BASE_URL ?? import.meta.env.BASE_URL ?? '';
 export type AppLang = 'cs' | 'en';
+
+export const hashHistoryAdapter = (hashHistory: HashHistory): CustomHistory => {
+  return {
+    listen: (callback) => hashHistory.listen(({ location }) => callback(location)),
+    location: hashHistory.location,
+    push: hashHistory.push,
+    replace: hashHistory.replace
+  };
+};
 
 type AppState = {
   lang: AppLang,
@@ -34,7 +45,8 @@ export function App() {
     <AppContext.Provider value={{ lang, setLang }}>
       <Header />
       <article class="container sm:mt-4 lg:max-w-3xl mx-auto p-4">
-        <Router>
+        // @ts-ignore
+        <Router history={ hashHistoryAdapter(createHashHistory()) }>
           <Home path={BASE_URL} />
           <Script path={`${BASE_URL}scripts/:script_name?`} />
           <NotFound default />

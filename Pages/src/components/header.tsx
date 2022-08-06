@@ -102,7 +102,7 @@ export default function Header() {
             </button>
         </header>
         {mobileMenu && (
-            <div class="flex flex-col bg-blue-400 px-2 text-white divide-blue-300 divide-y-2 sm:hidden" role="navigation">
+            <div class="flex flex-col bg-amber-600 px-2 text-white divide-red-700 divide-y-2 sm:hidden" role="navigation">
                 {menuEntries.map(e => (<HeaderBtn to={e.link} mobile>{e.text[lang]}</HeaderBtn>))}
                 <div class="px-2 flex flex-row align-center justify-around py-2">
                 {langRotation.map(l => (

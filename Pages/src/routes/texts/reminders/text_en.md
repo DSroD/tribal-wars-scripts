@@ -16,6 +16,6 @@ Generates `dist/main.js` file with transpiled javascript.
 
 Once you run the script, a window with reminders shows up. You can add new reminder or remove old/finished ones.
 
-![Example](/img/reminders.png)
+![Example](/tribal-wars-scripts/img/reminders.png)
 
 If any browser tab has this script running in the time of reminder a sound effect is played.

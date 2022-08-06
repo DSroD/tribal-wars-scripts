@@ -10,7 +10,7 @@ Kliknutím na jednotku nad textovým polem zvolíte vámi očekávanou nejpomale
 
 ### Ukázka
 
-![Ukázka](/img/helpgen.png)
+![Ukázka](/tribal-wars-scripts/img/helpgen.png)
 Po spuštění skriptu se objeví textové pole s informacemi
 
 

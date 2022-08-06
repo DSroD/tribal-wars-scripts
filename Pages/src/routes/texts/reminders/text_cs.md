@@ -18,6 +18,6 @@ Vygeneruje `dist/main.js` soubor s transpilovaným kódem.
 
 Po spuštění skriptu se zobrazí okno s časovači, kde lze přidat nový vlastní časovač, případně běžící/doběhlé časovače odstranit.
 
-![Ukázka](/img/reminders.png)
+![Ukázka](/tribal-wars-scripts/img/reminders.png)
 
 Pokud je v momentě doběhnutí časovače okno časovačů otevřeno v jakémkoliv panelu prohlížeče, dojde k přehrání zvukového efektu.

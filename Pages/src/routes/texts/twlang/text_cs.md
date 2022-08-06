@@ -6,7 +6,7 @@ Jednoduchý jazyk inspirovaný jazykem SCHEME. Umožňuje přístup k proměnný
 Skript: `javascript: void($.getScript('https://cdn.jsdelivr.net/gh/DSroD/tribal-wars-scripts/TWLang/dist/main.js?raw'))`
 Spuštěním skriptu se zobrazí okno REPL pro TWLang. Kód se evaluuje po stisknutí tlačítka `eval` nebo pomocí klávesové zkratky `Ctrl+Enter`
 
-![Ukázka](/img/twlang_repl.png)
+![Ukázka](/tribal-wars-scripts/img/twlang_repl.png)
 
 ## Typy
 

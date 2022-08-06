@@ -8,7 +8,7 @@ import { Script } from './routes/script'
 import { HashHistory, createHashHistory } from 'history';
 import { CustomHistory } from 'preact-router';
 
-export const BASE_URL = import.meta.env.VITE_BASE_URL ?? '';
+export const BASE_URL = import.meta.env.VITE_BASE_URL ?? '/';
 export type AppLang = 'cs' | 'en';
 
 export const hashHistoryAdapter = (hashHistory: HashHistory): CustomHistory => {

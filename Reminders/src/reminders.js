@@ -18,7 +18,9 @@ function village_reminder_window(isWidget) {
         $("<div></div>").attr("id", "tw_reminders")
             .addClass(isWidget ? ["vis", "moveable", "widget"] : [])
             .css(isWidget ? {} : {"z-index": "50000", "border": "1px solid #7d510f", "display": "block", "position": "fixed", "background": "#ebd6ab", "padding": "8px" })
-            .append($(`<h4>${isWidget ? `<img class="widget-button" onclick="return VillageOverview.toggleWidget( 'tw_reminders', this );" src="graphic/minus.png">` : ''}Reminders</h4>`).addClass(["head", "with-button", "ui-sortable-handle"])
+            .append(
+                $(`<h4>${isWidget ? `<img class="widget-button" onclick="return VillageOverview.toggleWidget( 'tw_reminders', this );" src="graphic/minus.png">` : ''}Reminders</h4>`)
+                .addClass(["head", "with-button", "ui-sortable-handle"])
             )
     )
 

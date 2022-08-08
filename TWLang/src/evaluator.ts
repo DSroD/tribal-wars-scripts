@@ -1,6 +1,6 @@
 import { match, P } from "ts-pattern";
 import { Env } from "./environment";
-import { Lambda, List, TWNumber, Symbol, TWObject, TWObjectType, Void, Zero, Number, One } from "./objects";
+import { Lambda, List, TWNumber, Symbol, TWObject, TWObjectType, Void, Zero, Number, One, Bool } from "./objects";
 import { Result, ResultFactory } from "./result";
 
 export function eval_obj(object: TWObject, env: Env): Result<TWObject, string> {
@@ -22,7 +22,7 @@ function eval_list(list: List, env: Env): Result<TWObject, string> {
     let head = list[1][0]
     
     return match(head)
-        .with(Symbol("if"), () => eval_if(list))
+        .with(Symbol("if"), () => eval_if(list, env))
         .with(Symbol("begin"), () => {
             let result: Result<TWObject, string> = ResultFactory.Result<TWObject>(Void)
             for (let o of list[1].slice(1)) {
@@ -165,8 +165,19 @@ function eval_list(list: List, env: Env): Result<TWObject, string> {
     })
 }
 
-function eval_if(list: List): Result<TWObject, string> {
-    return ResultFactory.StringError("Not implemented")
+function eval_if(list: List, env: Env): Result<TWObject, string> {
+    if (list[1].length !== 4)
+        return ResultFactory.StringError(`Expected if (condition) (true branch) (false branch)`)
+    
+    let condition = eval_obj(list[1][1], env)
+    if (!condition.is_successful)
+        return condition.append_error(`Error during evaluating if clause condition`)
+    let cond_result = condition.unwrap()
+    if (!check_type<Bool>(cond_result, TWObjectType.Bool))
+        return ResultFactory.StringError(`Error: if clause condition is not boolean`)
+    if (cond_result[1])
+        return eval_obj(list[1][2], env)
+    return eval_obj(list[1][3], env)
 }
 
 function eval_symbol(symbol: Symbol, env: Env): Result<TWObject, string> {

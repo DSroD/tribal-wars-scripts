@@ -18,8 +18,11 @@ function sortByCol(ind, asc, sortFunc) {
 
 function appendButtons() {
     if (!window.game_data) return
-    if (!(window.game_data.mode === 'call' && window.game_data.screen === 'market'))
+    let cw = location.search.split('&').filter(x => x === "screen=market" || x === 'mode=call')
+    if (cw.length != 2) {
         UI.InfoMessage("Script can not be used in this window", 2e3, 'error')
+        return
+    }
     const basic_sort = (x, y) => x > y
     const parse_num_sort = (x, y) => parseFloat(x) > parseFloat(y)
     const time_sort = (x, y) => {

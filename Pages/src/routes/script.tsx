@@ -2,6 +2,7 @@ import { useContext } from "preact/hooks";
 import { AppContext, AppLang } from "../app";
 import Markdown from "markdown-to-jsx";
 import { options } from "../markdown.config";
+import { Link } from "preact-router";
 
 // Reminders script
 import reminders_desc_en from './texts/reminders/desc_en.md?raw';
@@ -19,7 +20,10 @@ import helpgen_text_cs from './texts/helpgen/text_cs.md?raw';
 import twlang_desc_en from './texts/twlang/desc_en.md?raw';
 import twlang_desc_cs from './texts/twlang/desc_cs.md?raw';
 import twlang_text_cs from './texts/twlang/text_cs.md?raw';
-import { Link } from "preact-router";
+
+//MarketRequestSort
+import marketrequestsort_text_en from './texts/market-request-sort/text_en.md?raw';
+import marketrequestsort_text_cs from './texts/market-request-sort/text_cs.md?raw';
 
 interface ScriptPageProps {
     path: string
@@ -47,6 +51,11 @@ const scriptItems: Map<string, ScriptItem> = new Map([
         name: "TWLang",
         desc: { cs: twlang_desc_cs, en: twlang_desc_en },
         text: {cs: twlang_text_cs, en: 'TBD...'}
+    }],
+    ["market-request-sort", {
+        name: "Market Request Sort",
+        desc: {cs: "Přidání tlačítek pro seřazení vesnic v záložce 'Požádat' na tržišti.", en: "Sorting buttons in Request tab in the marketplace"},
+        text: {cs: marketrequestsort_text_cs, en: marketrequestsort_text_en}
     }]
 ])
 

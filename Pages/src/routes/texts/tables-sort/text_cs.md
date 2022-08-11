@@ -10,4 +10,4 @@ Momentálně funguje v okně informací o hráči, kde seřazuje vesnice a v okn
 
 Do záložky / lišty rychlého náhledu přidejte
 
-`javascript: void($.getScript('https://cdn.jsdelivr.net/gh/DSroD/tribal-wars-scripts/MarketRequestSort/main.js?raw'))`
+`javascript: void($.getScript('https://cdn.jsdelivr.net/gh/DSroD/tribal-wars-scripts/TablesSort/main.js?raw'))`

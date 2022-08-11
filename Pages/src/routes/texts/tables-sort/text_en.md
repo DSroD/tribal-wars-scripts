@@ -6,4 +6,4 @@ This script adds buttons to sort some tables in game (A = ascending, D = descend
 
 ## Usage
 
-`javascript: void($.getScript('https://cdn.jsdelivr.net/gh/DSroD/tribal-wars-scripts/MarketRequestSort/main.js?raw'))`
+`javascript: void($.getScript('https://cdn.jsdelivr.net/gh/DSroD/tribal-wars-scripts/TablesSort/main.js?raw'))`

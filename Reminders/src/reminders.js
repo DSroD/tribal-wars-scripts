@@ -91,7 +91,7 @@ function create_reminder_list() {
 
             a.text(`${time_rem > 0 ? (hours + ':' + minutes + ':' + seconds) : '00:00:00'}`)
             if (time_rem < 0 && timer_id) {
-                TribalWars.playSound("attack")
+                TribalWars.playSound("chicken")
                 clearInterval(timer_id)
                 return;
             }

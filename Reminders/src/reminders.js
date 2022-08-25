@@ -49,18 +49,31 @@ function village_reminder_window(isWidget) {
             .appendTo(new_reminder)
     })
 
-    let btn = $("<button>+</button>")
+    $("<button>C</button>")
         .click(e => {
-            let time = [$("#tw-reminder-hours").val(), $("#tw-reminder-minutes").val(), $("#tw-reminder-seconds").val()].map(x => parseInt(x))
+            const time = [$("#tw-reminder-hours").val(), $("#tw-reminder-minutes").val(), $("#tw-reminder-seconds").val()].map(x => parseInt(x))
             if (time.findIndex(x => isNaN(x)) !== -1)
                 return;
-            let parsed = parse_time(time)
+            const parsed = parse_time(time)
             add_reminder(parsed, location.href, $("#tw-reminder-name").val())
             refresh_reminder_list()
         })
         .addClass("btn btn-default free_send_button")
         .css({"margin-left": "4px"})
-        .appendTo(new_reminder)        
+        .appendTo(new_reminder)
+
+        $("<button>T</button>")
+        .click(e => {
+            const time = [$("#tw-reminder-hours").val(), $("#tw-reminder-minutes").val(), $("#tw-reminder-seconds").val()].map(x => parseInt(x))
+            if (time.findIndex(x => isNaN(x)) !== -1)
+                return;
+            const parsed = parse_time_e(time)
+            add_reminder(parsed, location.href, $("#tw-reminder-name").val())
+            refresh_reminder_list()
+        })
+        .addClass("btn btn-default free_send_button")
+        .css({"margin-left": "4px"})
+        .appendTo(new_reminder)
 }
 
 function create_reminder_list() {
@@ -80,6 +93,7 @@ function create_reminder_list() {
             .addClass("tw_reminder_row")
             .appendTo(reminders_div)
         $(`<div>${!!x.name ? x.name : "---"}<div>`).appendTo(div)
+        $(`<div>(${new Date(x.time).toLocaleString()})</div>`).appendTo(div)
         let a = $("<a></a>").attr("href", x.url).appendTo(div)
         let timer_id;
         const func = () => {
@@ -143,16 +157,23 @@ function scavenge_reminder() {
 }
 
 function add_reminder(time, url, name) {
-    let reminders = localStorage.getItem("tw_reminders");
-    let reminders_obj = JSON.parse(reminders);
+    const reminders = localStorage.getItem("tw_reminders");
+    const reminders_obj = JSON.parse(reminders);
     if (!reminders_obj) reminders_obj = [];
     else if (reminders_obj.filter(x => x.time === time && x.url === url && x.name === name).length > 0) return;
-    let new_reminders = [...reminders_obj, {time: time, url: url, name: name}];
+    const new_reminders = [...reminders_obj, {time: time, url: url, name: name}];
     localStorage.setItem("tw_reminders", JSON.stringify(new_reminders));
 }
 
 function parse_time(time_arr) {
     return Math.round(new Date(Date.now() + time_arr[0] * 1000 * 60 * 60 + time_arr[1] * 1000 * 60 + time_arr[2] * 1000).getTime() / 1000) * 1000
+}
+
+function parse_time_e(time_arr) {
+    const d = new Date()
+    if (time_arr[0] < d.getHours() || (time_arr[0] === d.getHours() && time_arr[1] < d.getMinutes()))
+        return Math.round(new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1, time_arr[0], time_arr[1], time_arr[2]).getTime() / 1000) * 1000
+    return Math.round(new Date(d.getFullYear(), d.getMonth(), d.getDate(), time_arr[0], time_arr[1], time_arr[2]).getTime() / 1000) * 1000
 }
 
 main();

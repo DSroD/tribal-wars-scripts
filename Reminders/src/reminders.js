@@ -45,7 +45,7 @@ function village_reminder_window(isWidget) {
 
     [["tw-reminder-hours", ":", 99], ["tw-reminder-minutes", ":", 59], ["tw-reminder-seconds", "", 59]].forEach(x => {
         $(`<input type="number" min="0" max="${x[2]}" id="${x[0]}" value="0"></input><span>${x[1]}</span>`)
-            .css({"width": "22px", "-webkit-appearance": "none", "-moz-appearance": "textfield"})
+            .css({"width": "26px", "-webkit-appearance": "none", "-moz-appearance": "textfield"})
             .appendTo(new_reminder)
     })
 

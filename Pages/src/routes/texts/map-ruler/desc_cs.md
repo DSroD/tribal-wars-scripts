@@ -1,0 +1,1 @@
+Skript *MapRuler* přidává možnost zvolit počáteční vesnici pro výpočty doby trvání cesty jednotlivých vojenských jednotek.

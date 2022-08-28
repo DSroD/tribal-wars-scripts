@@ -1,6 +1,6 @@
 import { match, P } from "ts-pattern";
 import { Env } from "./environment";
-import { Lambda, List, TWNumber, Symbol, TWObject, TWObjectType, Void, Zero, Number, One, Bool } from "./objects";
+import { Lambda, List, TWNumber, Symbol, TWObject, TWObjectType, Void, Zero, Number, One, Bool, True, False } from "./objects";
 import { Result, ResultFactory } from "./result";
 
 export function eval_obj(object: TWObject, env: Env): Result<TWObject, string> {
@@ -23,6 +23,7 @@ function eval_list(list: List, env: Env): Result<TWObject, string> {
     
     return match(head)
         .with(Symbol("if"), () => eval_if(list, env))
+        .with(Symbol("cond"), () => eval_if(list, env))
         .with(Symbol("begin"), () => {
             let result: Result<TWObject, string> = ResultFactory.Result<TWObject>(Void)
             for (let o of list[1].slice(1)) {
@@ -43,6 +44,7 @@ function eval_list(list: List, env: Env): Result<TWObject, string> {
             env.set(identifier[1], result.unwrap())
             return ResultFactory.Result<TWObject>(Void)
         })
+        .with(Symbol("equal?"), () => eval_equal(list, env))
         .with(Symbol("+"), () => eval_list_op<Number>((op1, op2) => ResultFactory.Result(TWNumber(op1[1] + op2[1])), list, env, TWObjectType.Number))
         .with(Symbol("-"), () => eval_list_op<Number>((op1, op2) => ResultFactory.Result(TWNumber(op1[1] - op2[1])), list, env, TWObjectType.Number))
         .with(Symbol("*"), () => eval_list_op<Number>((op1, op2) => ResultFactory.Result(TWNumber(op1[1] * op2[1])), list, env, TWObjectType.Number))
@@ -215,9 +217,8 @@ function eval_binary_op<T1 extends TWObject, T2 extends TWObject>(op: (param1: T
 
     if (!left.is_successful)
         return left.append_error(`Error evaluating left operand of ${op_list[1][0][1]}.`)
-    if (!right.is_successful){
+    if (!right.is_successful)
         return right.append_error(`Error evaluating right operand of ${op_list[1][0][1]}.`)
-    }
     
     let left_obj = left.unwrap()
     let right_obj = right.unwrap()
@@ -228,9 +229,29 @@ function eval_binary_op<T1 extends TWObject, T2 extends TWObject>(op: (param1: T
     if (!check_type<T2>(right_obj, obj2_type))
         return ResultFactory.StringError(`Type mismatch in right argument of ${op_list[1][0][1]}`)
     
-    return op(left_obj, right_obj)
+    return op(left_obj, right_obj) 
+}
+
+function eval_equal(op_list: List, env: Env) {
+    if (op_list[1].length !== 3)
+        return ResultFactory.StringError(`Expected 2 parameters for operation '${op_list[1][0][1]}'.`)
     
+    let left = eval_obj(op_list[1][1], env)
+    let right = eval_obj(op_list[1][2], env)
+
+    if (!left.is_successful)
+        return left.append_error(`Error evaluating left operand of ${op_list[1][0][1]}.`)
+    if (!right.is_successful)
+        return right.append_error(`Error evaluating right operand of ${op_list[1][0][1]}.`)
     
+    let left_obj = left.unwrap()
+    let right_obj = right.unwrap()
+
+    if (left_obj[0] === TWObjectType.List && right_obj[0] === TWObjectType.List)
+        //TODO: implement list equality properly, this is quite ugly
+        return ResultFactory.Result(JSON.stringify(left_obj) === JSON.stringify(right_obj) ? True : False)
+
+    return ResultFactory.Result((left_obj[0] === right_obj[0] && left_obj[1] === right_obj[1]) ? True : False)
 }
 
 function eval_list_op<T extends TWObject>(op: (param1: T, param2: T) => Result<T, string>, op_list: List, env: Env, t_type: TWObjectType): Result<TWObject, string> {

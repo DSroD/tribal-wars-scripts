@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "tsc": "tsc",
+    "build": "tsc index.ts types/tw.d.ts && terser index.js -c -m -o index.js"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.14",
+    "terser": "^5.15.0",
+    "typescript": "^4.8.2"
+  }
+}
